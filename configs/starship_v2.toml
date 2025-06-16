@@ -76,7 +76,7 @@ format = "[ $name]($style)"
 
 [kubernetes]
 disabled = false
-format = "[⛵ $context \($namespace\)](bold purple)"
+format = "[⛵ $context ($namespace)](bold purple)"
 
 [character]
 success_symbol = '[ ➜](bold green) '

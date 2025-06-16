@@ -66,7 +66,18 @@ charging_symbol = "⚡"
 discharging_symbol = "🔌"
 unknown_symbol = "❓"
 empty_symbol = "🪫"
-format = "[$symbol $percentage]($style)"
+format = "[$symbol $percentage]"
+
+[[battery.display]]
+threshold = 20
+style = "bold red"
+
+[[battery.display]]
+threshold = 50
+style = "bold yellow"
+
+[[battery.display]]
+threshold = 85    
 style = "bold green"
 
 [os]

@@ -1,6 +1,5 @@
 # Starship Prompt Configs
 
-![Starship Logo](https://starship.rs/assets/images/starship-logo.png)
 This repository contains two carefully crafted [Starship](https://starship.rs) prompt configurations, each tailored for different workflows. Designed to enhance your terminal experience with a focus on developer productivity and usability.
 
 ## 🔀 Config Versions: Pick Your Style

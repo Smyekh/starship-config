@@ -96,6 +96,7 @@ You can use these anywhere in your terminal — no need to specify full paths.
 
 Want to tweak the look or behavior of the prompt?
 Each configuration is fully editable:
+
 ```bash
 # Open the config file in your editor of choice:
 code ~/starship-config/config_v1.toml  # Minimal (v1)

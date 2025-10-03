@@ -1,32 +1,40 @@
-# Starship Prompt Configs
+# Starship Themes Collection
 
-This repository contains two carefully crafted [Starship](https://starship.rs) prompt configurations, each tailored for different workflows. Designed to enhance your terminal experience with a focus on developer productivity and usability.
+A curated collection of 5 unique and beautiful [Starship](https://starship.rs) prompt configurations, designed to fit any mood or workflow. Enhance your terminal experience with a prompt that’s both functional and stylish.
 
-## 🔀 Config Versions: Pick Your Style
+## ✨ Theme Showcase
 
-### 🥇 Version 1 — *Minimalist Precision with Practical Intelligence*
+This collection includes 5 distinct themes. Pick the one that best fits your style!
 
-- **Focus:** Clean, fast, and developer-aware.
-- Compact powerline flow displaying time, directory, Git status, and key tooling indicators.
-- Auto-detects JS/TS, React, Expo, Vite, Docker, task runners (`just`, `make`, `task`), `uv`, `locust`, and more.
-- Labels frontend/backend ports (🌐 React:3000, 🚀 FastAPI:8000).
-- Sleek dark theme, ideal for quick terminal work and high performance.
+### Forge (devforge)
 
----
+A clean, professional theme with a warm, industrial color palette of oranges and browns. Perfect for focused, everyday development.
 
-### 🥈 Version 2 — *Fully Loaded Dev Intelligence*
+* Alias: de
 
-- **Focus:** Rich tooling insight and interactivity.
-- Expanded layout includes:
-  - Clickable localhost port links using ANSI OSC8 escape codes.
-  - Auto-reload indicator for Vite, Uvicorn, Nodemon, Expo, Next.js, etc.
-  - Docker container detection with labeled emoji indicators:
-    - 🐘 postgres, 🧠 redis, 🛢️ mysql, 🌐 frontend, 🚀 backend, 📦 other
-  - Locust auto-link (`🐜 http://localhost:8089`)
-  - More verbose visibility into:
-    - `cmd_duration`, `jobs`, `memory_usage`, `battery`, `os`, `kubernetes`
+### ForestGlow (forestglow)
 
-> 🎯 Perfect for power users who want their terminal to *think like a full-stack dashboard*.
+A cozy, nature-inspired theme with earthy greens and wood tones. Uses emojis for a friendly and organic feel.
+
+* Alias: fo
+
+### GrindMode (grindmode)
+
+A high-contrast, high-energy theme designed for maximum focus. Uses a bold palette of gold, blue, and green to keep you in the zone.
+
+* Alias: gr
+
+### SugarShell (sugarshell)
+
+A fun and vibrant theme with a sweet palette of pinks and purples. Adds a splash of color and personality to your terminal.
+
+* Alias: su
+
+### Zoomies (zoomies)
+
+An energetic and playful animal-themed prompt. Features a unique color for each segment and fun emojis for different tools.
+
+* Alias: zo
 
 ---
 
@@ -34,26 +42,34 @@ This repository contains two carefully crafted [Starship](https://starship.rs) p
 
 ### 1. Clone the Repository
 
-```bash
+```zsh
 git clone https://github.com/Smyekh/starship-config.git ~/starship-config 
 ```
 
-Now you have the following directory structure:
+This will create the following directory structure:
 
-```~/starship-config
-├── config_v1.toml  #version 1 config
-├── config_v2.toml  #Version 2 config
-├── setup.sh        #automatic setup script
-└── scripts/ 
-    └── use_starship.sh #Script to use the config
-
+```shell
+~/starship-config
+├── config/
+│   ├── starship_devforge.toml
+│   ├── starship_forestglow.toml
+│   ├── starship_grindmode.toml
+│   ├── starship_sugarshell.toml
+│   └── starship_zoomies.toml
+├── scripts/
+│   └── use_starship.sh
+├── themes/
+│   ├── starship_devforge.meta
+│   └── ... (other theme metadata)
+├── setup.sh
+└── README.md
 ```
 
 ### 2. Run the Setup Script
 
-Navigate to the cloned directory and run the setup script:
+Navigate to the cloned directory and run the setup script to automatically configure your shell (`.zshrc` or `.bashrc`).
 
-```bash
+```zsh
 cd ~/starship-config
 chmod +x setup.sh  # Make the script executable
 ./setup.sh
@@ -61,79 +77,73 @@ chmod +x setup.sh  # Make the script executable
 
 This script will:
 
-- Detect your shell (bash or zsh)
+* Detect your shell (`bash` or `zsh`)
 
-- Append the necessary sourcing logic to ~/.bashrc or ~/.zshrc
+* Append the necessary sourcing logic to `~/.bashrc` or `~/.zshrc`
 
-- Allow you to start using use_starship commands immediately
+* Allow you to start using use_starship commands immediately
 
 If you're using another shell, it’ll show you what to add manually.
 
 ### 3. Reload Your Shell
 
-Apply the changes:
+To apply the changes, either restart your terminal or run:
 
-```bash
-source ~/.zshrc  # or ~/.bashrc depending on your shell
+```zsh
+source ~/.zshrc  # or source ~/.bashrc
 ```
+
+This ensures the new configurations are loaded and ready to use.
 
 ## 🚀 Usage
 
-Once setup is complete, you can switch Starship configs with:
+Once setup is complete, you can easily switch between Starship configs from anywhere in your terminal.
 
-```bash
-use_starship v1     # or: use_starship **min**
-use_starship v2     # or: use_starship **dev**
-use_starship default  # use your regular Starship config
-use_starship restore  # restore the config used before switching
-use_starship list     # see available configs
+```zsh
+# Switch to a specific theme by name or alias
+use_starship grindmode  # or use_starship gr
+use_starship forestglow # or use_starship fo
+
+# List all available themes
+use_starship list
+
+# Revert to Starship's default config
+use_starship default
+
+# Restore the last custom theme you were using
+use_starship restore
+
+# Get help
+use_starship help
 ```
 
 You can use these anywhere in your terminal — no need to specify full paths.
 
-## 🛠️ Customizing the Configs
+> ### ⚠️ Important Note
+>
+> This script works by replacing the contents of your main ~/.config/starship.toml file with the theme you select. Any custom changes you make directly to ~/.config/starship.toml will be lost when you switch themes. To make permanent changes, edit the theme files in ~/starship-config/config/ instead.
 
-Want to tweak the look or behavior of the prompt?
-Each configuration is fully editable:
+## 🛠️ Customizing a Theme
 
-```bash
-# Open the config file in your editor of choice:
-code ~/starship-config/config_v1.toml  # Minimal (v1)
-code ~/starship-config/config_v2.toml  # Detailed (v2)
+Want to tweak a theme? Edit the .toml files directly within the ~/starship-config/config/ directory.
+
+```zsh
+# Open the theme you want to edit in your favorite editor
+code ~/starship-config/config/starship_grindmode.toml
 ```
 
-Once edited:
+After saving your changes, simply apply the theme again with use_starship grindmode to see your updates.
 
-- Switch to that config using use_starship v1 or use_starship v2
-
-- Or just reload your shell if you're already using it:
-
-```bash
-exec $SHELL  # quick refresh without closing terminal
-```
-
-### 🔧 Tips for Customization
-
-- Reference the [Starship Configuration Docs](https://starship.rs/config/) to see all available modules and options.
-- To add a new module (e.g. kubernetes, git_status, python), just add it under [module_name] in the TOML file.
-- For emoji indicators or color tweaks, follow Starship's syntax:
-
-```toml
-[nodejs]
-symbol = "🟩 "
-style = "bold green"
-```
-
-- Use the `style` attribute to customize colors and formatting.
+Refer to the official Starship Configuration [Docs](https://starship.rs/config/) for all available modules and options.
 
 ## ✅ Requirements
 
-- [Starship CLI installed](https://starship.rs/guide/#%F0%9F%9A%80-installation)
+* [Starship] (https://starship.rs/guide/#%F0%9F%9A%80-installation) must be installed.
 
-- Compatible with **bash** or **zsh** shells
+* A [Nerd Font] (https://www.nerdfonts.com/) is required to display icons correctly.
 
-## 🎉 Conclusion
+* The setup script officially supports bash and zsh. For other shells, you will need to manually source the `~/starship-config/scripts/use_starship.sh` script in your shell's configuration file.
 
-Now you have a powerful, customizable Starship prompt that enhances your terminal experience with either a minimalist or fully loaded configuration. Choose the one that fits your workflow best and enjoy the productivity boost!
+---
 
 Made with ☕ by Smyekh

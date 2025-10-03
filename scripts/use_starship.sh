@@ -14,8 +14,11 @@ use_starship() {
     #Map shorthand to actual filenames
     local MAP_INPUT=$1
     case "$MAP_INPUT" in
-        min|v1) MAP_INPUT="starship_v1" ;;
-        dev|v2) MAP_INPUT="starship_v2" ;;
+        devforge|de) MAP_INPUT="starship_devforge" ;;
+        forestglow|fo) MAP_INPUT="starship_forestglow" ;;
+        grindmode|gr) MAP_INPUT="starship_grindmode" ;;
+        sugarshell|su) MAP_INPUT="starship_sugarshell" ;;
+        zoomies|zo) MAP_INPUT="starship_zoomies" ;;
         default) MAP_INPUT="default" ;;
         restore) MAP_INPUT="restore" ;;
         list) MAP_INPUT="list" ;;
@@ -64,5 +67,11 @@ use_starship() {
         ;;
     esac
 
-    exec "$SHELL"
+        # Refresh prompt and completions (Zsh only)
+    if [[ "$SHELL" == */zsh ]]; then
+        echo "🔄 Reloading Zsh prompt..."
+        eval "$(starship init zsh)"
+        autoload -Uz compinit && compinit -C
+    fi
+
 }

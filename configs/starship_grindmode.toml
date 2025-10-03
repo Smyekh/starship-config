@@ -1,0 +1,169 @@
+#grindmode
+
+command_timeout = 1000
+
+format = """
+[](color_gold)\
+$os\
+$username\
+[ ](bg:color_blue fg:color_gold)\
+$directory\
+[ ](fg:color_blue bg:color_lime)\
+$git_branch\
+$git_status\
+$git_commit\
+[ ](fg:color_lime bg:color_teal)\
+$nodejs\
+$python\
+$rust\
+[ ](fg:color_teal bg:color_cyan)\
+$docker_context\
+[ ](fg:color_cyan bg:color_gray)\
+$time\
+[ ](fg:color_gray)\
+$line_break$character"""
+
+
+
+palette = "grind_mode"
+
+
+[palettes.grind_mode]
+# Text + Backgrounds
+color_fg0       = '#e0e0e0' # bright neutral text
+color_bg1       = '#0d1117' # gym black (main bg)
+color_bg2       = '#161b22' # dark zone
+color_bg3       = '#1e1e2f' # subtle shadow
+color_border    = '#2c2f36' # steel divider
+
+# Contrast Bump Gradient (left-to-right)
+color_gold      = '#fbc02d' # 🏆 bright yellow highlight (HIGH)
+color_blue      = '#1565c0' # 🧢 team blue/navy (LOW)
+color_lime      = '#4caf50' # 🥬 lime green, active (HIGH)
+color_teal      = '#00796b' # 🧪 deep teal (LOW)
+color_cyan      = '#00acc1' # 🌊 bright cyan (HIGH)
+color_gray      = '#616161' # ⏱ neutral gray (LOW)
+
+# Extras (optional use)
+color_red       = '#c62828' # ❌ error / fail
+color_orange    = '#ff6f00' # ⚠️ build/task alerts
+color_purple    = '#6a1b9a' # 🔮 optional: kotlin, config, etc.
+color_brown     = '#5d4037' # ⛓ deep rust gear brown
+color_brown_light = '#8d6e63' # 🪵 leather grip (alt rust)
+
+# Highlight variants
+color_silver    = '#9e9e9e' # frame/shells
+color_blackout  = '#000000' # max contrast if needed
+
+
+[os]
+disabled = false
+style = "bg:color_gold fg:color_fg0"
+
+[os.symbols]
+Windows = "󰍲"
+Ubuntu = "󰕈"
+SUSE = ""
+Raspbian = "󰐿"
+Mint = "󰣭"
+Macos = "󰀵"
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = "󰣇"
+Artix = "󰣇"
+EndeavourOS = ""
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+Pop = ""
+
+[username]
+show_always = true
+style_user = "bg:color_gold fg:color_fg0"
+style_root = "bg:color_gold fg:color_fg0"
+format ='[ $user ]($style)'
+
+
+[directory]
+style = "fg:color_fg0 bg:color_blue"
+format = "[$path ]($style)"
+truncation_length = 3
+truncation_symbol = " "
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = "󰝚 "
+"Pictures" = " "
+"Developer" = "󰲋 "
+
+[git_branch]
+symbol = ""
+style = "fg:color_fg0 bg:color_lime"
+format = '[[$symbol $branch ](fg:color_fg0  bg:color_lime)]($style)'
+truncation_length = 4
+truncation_symbol = "..."
+ignore_branches = []
+
+
+[git_status]
+style = "bg:color_lime"
+format = '[[($all_status$ahead_behind )](fg:color_fg0  bg:color_lime)]($style)'
+conflicted = '󱧴'
+ahead = '󱦴 ${count}'
+behind = '󱦶 ${count}'
+diverged = ' 󱦸 󱦴${ahead_count} 󱦶${behind_count}'
+up_to_date = ' 󱦺 '
+untracked = ''
+stashed = ''
+modified = '󱦣 '
+staged = '[ 󱫉\($count\)](bg:color_lime)'
+renamed = '󱧬'
+deleted = '󱫊 '
+
+[git_commit]
+style = "bg:color_lime"
+format = '[\($hash\)]($style)'
+commit_hash_length = 4
+tag_symbol = ' '
+
+[python]
+symbol = ""
+style = "bg:color_bronze"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_teal)]($style)'
+python_binary = "python"
+
+[nodejs]
+symbol = ""
+style = "bg:color_bronze"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_teal)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:color_bronze"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_teal)]($style)'
+
+[docker_context]
+style = "bg:color_cyan"
+symbol = ""
+format = '[[ $symbol( $context) ](fg:color_fg0 bg:color_cyan)]($style)'
+
+[time]
+disabled = false
+time_format = "%R"
+style = "bg:color_gray"
+format = "[[   $time ](fg:color_fg0 bg:color_gray)]($style)"
+
+[line_break]
+disabled = true
+
+[character]
+disabled = false
+success_symbol = "[󰔓 ](bold fg:color_blue)"
+error_symbol = "[󰔑 ](fg:color_red)"

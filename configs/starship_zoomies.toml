@@ -1,0 +1,124 @@
+#zoomies
+command_timeout = 1000
+
+add_newline = false
+
+format = """
+[](fg:#a16a5e)\
+$os\
+$username\
+[](bg:#87af87 fg:#a16a5e)\
+$directory\
+[](fg:#87af87 bg:#af87af)\
+$git_branch$git_status\
+[](fg:#af87af bg:#af875f)\
+$python\
+[](fg:#af875f bg:#af5f5f)\
+$nodejs\
+[](fg:#af5f5f bg:#afaf5f)\
+$rust\
+[](fg:#afaf5f bg:#665c54)\
+$docker_context\
+[](fg:#665c54 bg:#3c3836)\
+$time\
+[ ](fg:#3c3836)\
+$line_break$character
+"""
+
+[palettes.zooprompt]
+color_fg0 = "#fbf1c7"
+color_bg1 = "#3c3836"
+color_bg3 = "#665c54"
+color_tortoise = "#87af87"
+color_elephant = "#af87af"
+color_snake = "#af875f"
+color_lion = "#af5f5f"
+color_squirrel = "#afaf5f"
+color_fox = "#a16a5e"
+
+
+[os]
+disabled = false
+style = "bg:#a16a5e fg:#fbf1c7"
+
+[os.symbols]
+Macos = "󰀵"
+Linux = "󰌽"
+Ubuntu = "󰕈"
+Windows = "󰍲"
+
+
+[username]
+show_always = true
+style_user = "bg:#a16a5e fg:#fbf1c7"
+style_root = "bg:#a16a5e fg:#fbf1c7"
+format = '[ $user ]($style)'
+
+[directory]
+style = "fg:#fbf1c7 bg:#87af87"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "🐢 "
+
+[directory.substitutions]
+"Documents" = "📄"
+"Downloads" = "📥"
+"Music" = "🎵"
+"Pictures" = "📸"
+"Developer" = "💻"
+
+
+[git_branch]
+symbol = "🐘"
+style = "bg:#af87af"
+format = '[[  $symbol $branch ](fg:#fbf1c7 bg:#af87af)]($style)'
+
+[git_status]
+style = "bg:#af87af"
+format = '[[($all_status$ahead_behind )](fg:#fbf1c7 bg:#af87af)]($style)'
+conflicted = '󱧴'
+ahead = '󱦴 ${count}'
+behind = '󱦶 ${count}'
+diverged = ' 󱦸 󱦴${ahead_count} 󱦶${behind_count}'
+up_to_date = ' 󱦺 '
+untracked = ''
+stashed = ''
+modified = '🦴 '
+staged = '[ 󱫉\($count\)](bg:color_lime)'
+renamed = '󱧬'
+deleted = '󱫊 '
+
+[python]
+symbol = "🐍"
+style = "bg:#af875f"
+format = '[[ $symbol ($version) ](fg:#fbf1c7 bg:#af875f)]($style)'
+python_binary = "python"
+
+[nodejs]
+symbol = "🦁"
+style = "bg:#af5f5f"
+format = '[[ $symbol ($version) ](fg:#fbf1c7 bg:#af5f5f)]($style)'
+
+[rust]
+symbol = "🦫"
+style = "bg:#afaf5f"
+format = '[[ $symbol ($version) ](fg:#fbf1c7 bg:#afaf5f)]($style)'
+
+[docker_context]
+symbol = "🐳"
+style = "bg:#665c54"
+format = '[[ $symbol ($context) ](fg:#fbf1c7 bg:#665c54)]($style)'
+
+[time]
+disabled = false
+time_format = "%H:%M"
+style = "bg:#3c3836"
+format = '[[ ⏰ $time ](fg:#fbf1c7 bg:#3c3836)]($style)'
+
+[line_break]
+disabled = true
+
+[character]
+success_symbol = "[🐾](bold green)"
+error_symbol = "[💢](bold red)"
+

@@ -1,0 +1,84 @@
+# version: 1.0.0
+#forestglow
+command_timeout = 1000
+add_newline = false
+
+format = """
+[░▒▓](fg:#a5d6a7)\
+[ 🌲 ](bg:#a5d6a7 fg:#1b5e20)\
+[](bg:#66bb6a fg:#a5d6a7)\
+$directory\
+[](fg:#66bb6a bg:#8d6e63)\
+$git_branch$git_status\
+[](fg:#8d6e63 bg:#6d4c41)\
+$rust$python$nodejs\
+[](fg:#6d4c41 bg:#2e2e2e)\
+$time\
+[ ](fg:#2e2e2e)\
+$line_break$character
+"""
+
+[line_break]
+disabled = true
+
+[character]
+success_symbol = "[🌿](bold green)"
+error_symbol = "[🧨](bold red)"
+
+[username]
+style_user = "fg:#4caf50"
+show_always = true
+
+[directory]
+style = "fg:#ffffff bg:#66bb6a"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "📄 "
+"Downloads" = "🪺 "
+"Music" = "🎵 "
+"Pictures" = "🖼 "
+
+[git_branch]
+symbol = "🪵 "
+style = "bg:#8d6e63"
+format = '[[ $symbol $branch ](fg:#ffffff bg:#8d6e63)]($style)'
+
+[git_status]
+style = "bg:#8d6e63"
+format = '[[ ($all_status$ahead_behind) ](fg:#ffffff bg:#8d6e63)]($style)'
+conflicted = '⚠️'
+ahead = '➡️ ${count}'
+behind = '⬅️ ${count}'
+diverged = ' ↔️ ➡️${ahead_count} ⬅️${behind_count}'
+up_to_date = ' 📅 '
+untracked = '🗃️ '
+stashed = '📦 '
+modified = '🪑 '
+staged = '[ 📤\($count\)](bg:color_lime)'
+renamed = '📥'
+deleted = '🗑️ '
+
+[rust]
+symbol = "🪓"
+style = "bg:#6d4c41"
+format = '[[ $symbol ($version) ](fg:#a1887f bg:#6d4c41)]($style)'
+
+[python]
+symbol = "🐍"
+style = "bg:#6d4c41"
+format = '[[ $symbol ($version) ](fg:#a1887f bg:#6d4c41)]($style)'
+python_binary = "python"
+
+[nodejs]
+symbol = "🌰"
+style = "bg:#6d4c41"
+format = '[[ $symbol ($version) ](fg:#a1887f bg:#6d4c41)]($style)'
+
+[time]
+disabled = false
+time_format = "%H:%M"
+style = "bg:#2e2e2e"
+format = '[[ ⏳ $time ](fg:#cfd8dc bg:#2e2e2e)]($style)'

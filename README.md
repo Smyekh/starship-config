@@ -138,9 +138,9 @@ Refer to the official Starship Configuration [Docs](https://starship.rs/config/)
 
 ## ✅ Requirements
 
-* [Starship] (https://starship.rs/guide/#%F0%9F%9A%80-installation) must be installed.
+* [Starship](https://starship.rs/guide/#%F0%9F%9A%80-installation) must be installed.
 
-* A [Nerd Font] (https://www.nerdfonts.com/) is required to display icons correctly.
+* A [Nerd Font](https://www.nerdfonts.com/) is required to display icons correctly.
 
 * The setup script officially supports bash and zsh. For other shells, you will need to manually source the `~/starship-config/scripts/use_starship.sh` script in your shell's configuration file.
 
